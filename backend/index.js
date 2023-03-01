@@ -10,7 +10,7 @@ var app = express();
 
 require('./config/database');
 
-require('./models/users');
+require('./models/users.model');
 
 require('./config/passport')(passport);
 
@@ -29,4 +29,4 @@ require('./routes/users.route.js')(app);
  */
 
 // Server listens on http://localhost:3000
-app.listen(3000);
+app.listen(3000,()=>console.log("server listening on port 3000"));

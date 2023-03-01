@@ -1,14 +1,14 @@
 const mysql = require("mysql2");
-const dbConfig = require("./db.config");
+require('dotenv').config()
 const connection = require("knex")({
     client: "mysql2",
     connection: {
       connectionLimit:20,
-      host: dbConfig.HOST,
-      port: dbConfig.DB_PORT,
-      user: dbConfig.USER,
-      database: dbConfig.DB_NAME,
-      password:dbConfig.PASSWORD
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      user: process.env.DB_USER,
+      database: process.env.DB_NAME,
+      password:process.env.DB_PASSWORD
     },
   })
   connection.raw("select 1").then(()=>
