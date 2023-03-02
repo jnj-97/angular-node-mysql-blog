@@ -2,9 +2,8 @@ const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const fs = require('fs');
 
-function validPassword(password) {
-   // var hashVerify = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
-    return hash === hashVerify;
+function validPassword(password,hash) {
+    return bcrypt.compareSync(password,hash);
 }
 
 function genPassword(password) {
@@ -16,8 +15,8 @@ function genPassword(password) {
 
 
 function issueJWT(user) {
-  const _id = user._id;
-
+  const _id = user.user_id;
+  console.log(_id)
   const expiresIn = '1d';
 
   const payload = {
@@ -25,10 +24,10 @@ function issueJWT(user) {
     iat: Date.now()
   };
 
-  const signedToken = jsonwebtoken.sign(payload, process.env.JWT_SECRET, { expiresIn: expiresIn, algorithm: 'RS256' });
-
+  const signedToken = jsonwebtoken.sign(payload, process.env.JWT_SECRET, { expiresIn: expiresIn });
+  
   return {
-    token: "Bearer " + signedToken,
+    token:signedToken,
     expires: expiresIn
   }
 }

@@ -9,20 +9,20 @@
   "
 >
   <p class="text-3xl mt-4 font-semibold">Sign Up</p>
-  <form style="text-align:left" class="m-4 text-xl">
+  <form (ngSubmit)="onSignUpSubmit(signUpForm)" #signUpForm="ngForm" style="text-align:left" class="m-4 text-xl">
 
     <label >Name</label>
     <div>
-    <input class="m-3 p-1 rounded-md bg-slate-400" type="text"/></div>
+    <input name="name" class="m-3 p-1 rounded-md bg-slate-400" type="text" ngModel/></div>
     <label >Email</label>
     <div>
-    <input class="m-3 p-1 rounded-md bg-slate-400" type="email"/></div>
+    <input name="email" class="m-3 p-1 rounded-md bg-slate-400" type="email" ngModel/></div>
     <label>Password</label>
     <div>
-    <input class="m-3 p-1 rounded-md bg-slate-400" type="password"/>
+    <input name="password" class="m-3 p-1 rounded-md bg-slate-400" type="password" ngModel/>
   </div>
   <div>
-  <button class="bg-green-500 w-1/4 rounded-lg p-2 ml-24 mt-4" type="submit">Enter</button>
+  <button  class="bg-green-500 w-1/4 rounded-lg p-2 ml-24 mt-4" type="submit">Enter</button>
 </div>
 </form>
 </div>
@@ -36,3 +36,14 @@
     transform: translate(-50%, -50%);
   "
 >Already have an Account? Log In <a href="/login">Here</a></div>
+<div
+  class="font-semibold  text-red-700  rounded-md"
+  style="
+    text-align: center;
+    position: absolute;
+    top: 84%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  "
+  *ngIf="registrationError"
+>Invalid Field(s). Please Try Again</div>

@@ -11,18 +11,15 @@ var app = express();
 require('./config/database');
 
 require('./models/users.model');
-
 require('./config/passport')(passport);
-
+app.use(cors())
 app.use(passport.initialize());
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use(cors());
 
 require('./routes/users.route.js')(app);
-
 
 /**
  * -------------- SERVER ----------------
