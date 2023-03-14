@@ -13,7 +13,12 @@ loginError:string=""
 loginSubmit(loginForm:any){
   console.log(loginForm.value)
   this.http.login(loginForm.value).subscribe(res=>{
+    console.log(res)
     if(res.message=="true"){
+
+
+      localStorage.setItem('token',res?.token??'null')
+
       this.router.navigate(['/home'])
     }
     else if(res.message=="Invalid Password"){
@@ -27,5 +32,6 @@ loginSubmit(loginForm:any){
     }
   },
   err=>{this.loginError=err})
+  console.log("After request")
 }
 }

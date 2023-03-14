@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Auth } from 'src/app/interfaces/auth';
+import { Auth, tokenResponse } from 'src/app/interfaces/auth';
+import { Blogs } from 'src/app/interfaces/blogs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,4 +18,10 @@ register(body:JSON):Observable<Auth>{
 login(body:JSON):Observable<Auth>{
   return this.http.post<Auth>(`${this.baseURL}/users/login`,body)
 }
+validateToken():Observable<any>{
+  return this.http.get<any>(`${this.baseURL}/validateToken`)
+}
+
+
+
 }

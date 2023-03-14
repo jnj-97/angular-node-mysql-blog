@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const fs = require('fs');
+const moment=require('moment')
 
 function validPassword(password,hash) {
     return bcrypt.compareSync(password,hash);
@@ -16,15 +17,15 @@ function genPassword(password) {
 
 function issueJWT(user) {
   const _id = user.user_id;
-  console.log(_id)
   const expiresIn = '1d';
 
   const payload = {
-    sub: _id,
-    iat: Date.now()
+    id: _id,
+    iat: Date.now(),
+    expiresIn:moment().add('2','w')
   };
 
-  const signedToken = jsonwebtoken.sign(payload, process.env.JWT_SECRET, { expiresIn: expiresIn });
+  const signedToken = jsonwebtoken.sign(payload, process.env.JWT_SECRET);
   
   return {
     token:signedToken,

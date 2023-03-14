@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+const moment=require('moment')
 const path = require('path');
 const knex = require("../config/database");
 const JwtStrategy=require('passport-jwt').Strategy
@@ -12,10 +12,15 @@ const options = {
 };
 const strategy=new JwtStrategy(options,(payload,done)=>
 {
-    console.log(payload)
-    done(null,payload) 
+    if(moment().isBefore(payload.expiresIn)){
+        done(null,payload)   
+    }
+    else{
+        done(null,false)
+    }
+
 })
 module.exports = (passport) => {
-    console.log("SDSDSD")
+    
     passport.use(strategy)
 }

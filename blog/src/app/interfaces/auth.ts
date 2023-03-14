@@ -3,3 +3,6 @@ export interface Auth {
   token?:string,
   expiresIn?:string
 }
+export interface tokenResponse{
+  success?:boolean
+}

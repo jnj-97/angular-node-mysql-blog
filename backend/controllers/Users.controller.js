@@ -1,6 +1,7 @@
 const UserModel=require('../models/users.model')
 const utils=require('../utils/utils')
 const bcrypt=require('bcrypt')
+const moment=require('moment')
 exports.registerController=async (req,res)=>{
     try {
         console.log(req.body)
@@ -46,8 +47,15 @@ exports.loginController=async (req,res)=>{
         res.status(500).json(error)
     }
 }
-exports.protectedController=(req,res)=>{
-    console.log("s1d2a31d2a1")
-    console.log(req.user)
-    res.status(200).json({message:"Authorized user"})
+exports.homeController=async (req,res)=>{
+    try{
+        console.log(req.user)
+        let blogs=await UserModel.getAllBlogs()
+        res.status(200).json(blogs)
+    }
+    catch(err){
+    console.log(err)
+    res.status(500).json({message:"Unknown error occurred: ",})
+    }
+
 }
