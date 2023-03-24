@@ -10,6 +10,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AuthService } from './services/auth/auth.service';
 import { FormsModule } from '@angular/forms';
 import { AddHeaderService } from './services/interceptors/add-header.service';
+import { AddPostFormComponent } from './components/addPost/add-post-form/add-post-form.component';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,19 +19,21 @@ import { AddHeaderService } from './services/interceptors/add-header.service';
     NavbarComponent,
     BlogsComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    AddPostFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [ {
     provide:HTTP_INTERCEPTORS,
     useClass:AddHeaderService,
     multi:true
-  },AuthService,
+  },AuthService,DatePipe
 
 ],
   bootstrap: [AppComponent]

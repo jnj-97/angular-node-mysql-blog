@@ -10,7 +10,6 @@ var app = express();
 
 require('./config/database');
 
-require('./models/users.model');
 require('./config/passport')(passport);
 app.use(cors())
 app.use(passport.initialize());
@@ -20,7 +19,7 @@ app.use(express.urlencoded({extended: true}));
 
 
 require('./routes/users.route.js')(app);
-
+require('./routes/blogs.route')(app)
 /**
  * -------------- SERVER ----------------
  */

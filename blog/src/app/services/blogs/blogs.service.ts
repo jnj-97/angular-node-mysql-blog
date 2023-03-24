@@ -10,7 +10,10 @@ export class BlogsService {
 
   private baseURL:string="http://localhost:3000"
   constructor(private http:HttpClient) {}
-  getBlogs():Observable<Blogs>{
-    return this.http.get<Blogs>(`${this.baseURL}/users/home`)
+  getBlogs():Observable<Blogs[]>{
+    return this.http.get<Blogs[]>(`${this.baseURL}/blogs/home`)
+  }
+  addBlog(body:JSON):Observable<JSON>{
+    return this.http.post<JSON>(`${this.baseURL}/blogs/addpost`,body)
   }
 }

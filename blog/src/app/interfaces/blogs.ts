@@ -1,6 +1,7 @@
 export interface Blogs {
-  title:String,
-  body:String,
-  author:String,
-  status:Number
+  title:string,
+  body:string,
+  username:string,
+  created_time:string,
+  profile_picture:string
 }

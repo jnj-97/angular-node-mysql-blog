@@ -18,10 +18,5 @@ register(body:JSON):Observable<Auth>{
 login(body:JSON):Observable<Auth>{
   return this.http.post<Auth>(`${this.baseURL}/users/login`,body)
 }
-validateToken():Observable<any>{
-  return this.http.get<any>(`${this.baseURL}/validateToken`)
-}
-
-
 
 }

@@ -25,3 +25,9 @@
   </div>
 
 </nav>
+<app-add-post-form />
+<ul>
+<li *ngFor="let item of blogs ">
+  <app-blogs [author]="item.username" [created]="item.created_time" [body]="item.body"/>
+</li>
+</ul>

@@ -35,20 +35,3 @@ exports.fetchUser=(username)=>{
         }
     })
 }
-exports.getAllBlogs=()=>{
-    return new Promise(async function(resolve,reject){
-        try{
-            let data=await knex.select("*").from('blogs as b').join('users as u','b.author','=','u.user_id')
-            resolve(data)
-            // ,function(){
-            //     this.on('b.author','=','u.user_id').then(
-            //         rows=>console.log(rows)
-            //     )
-            //     resolve(rows)
-            // }
-            
-        }catch(err){
-            reject(err)
-        }
-    })
-}
