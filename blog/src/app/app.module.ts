@@ -20,8 +20,7 @@ import { CommonModule, DatePipe } from '@angular/common';
     BlogsComponent,
     LoginComponent,
     SignupComponent,
-    AddPostFormComponent
-  ],
+    AddPostFormComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

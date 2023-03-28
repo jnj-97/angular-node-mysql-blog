@@ -6,7 +6,7 @@
     padding: 20px;
     margin:5px 20% 20px 20%;
 }
-    
+
 .blog-comment-header {
     display: flex;
     align-items: center;
@@ -15,35 +15,39 @@
 .author{
     color:rgb(107, 194, 197);
 }
-    
+
 .blog-comment-logo {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
 }
-    
+
 .blog-comment-details {
     font-size: 16px;
     font-weight: bold;
 }
-    
+
 .blog-comment-body {
     font-size: 14px;
     line-height: 1.5;
     margin-bottom: 10px;
 }
-    
+
 .blog-comment-like {
     filter: hue-rotate(180deg);
     width: 20px;
     height: 20px;
     margin-right: 5px;
-    
+
 }
-    
+
 .blog-comment-like-count {
     display: inline-block;
     font-size: 14px;
     font-weight: bold;
+}
+.blog-comment-like:hover{
+  cursor:pointer;
+
 }

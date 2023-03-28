@@ -18,6 +18,7 @@
 <app-add-post-form class="add-post-form"/>
 <ul class="blog-list">
   <li *ngFor="let item of blogs" class="blog-list-item">
-    <app-blogs [author]="item.username" [created]="item.created_time" [body]="item.body" class="blog-item"/>
+    <app-blogs [author]="item.username" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" class="blog-item"/>
   </li>
 </ul>
+<footer>Created by <a href="https://github.com/karthiksatish159">Karthik Satish Telagareddy</a>, <a href="https://github.com/jnj-97">Nobin Johnson</a> and <a href="https://github.com/jagadeeswar300">Jagadeeswar Reddy</a> </footer>

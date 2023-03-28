@@ -25,4 +25,4 @@ require('./routes/blogs.route')(app)
  */
 
 // Server listens on http://localhost:3000
-app.listen(3000,()=>console.log("server listening on port 3000"));
+app.listen(4000,()=>console.log("server listening on port 3000"));

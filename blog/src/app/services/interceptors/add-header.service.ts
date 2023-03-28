@@ -16,7 +16,6 @@ export class AddHeaderService implements HttpInterceptor {
       return next.handle(request)
     }
     else{
-    console.log("token: ",token)
    let tokenRequest=request.clone({
        setHeaders:{
         Authorization:token

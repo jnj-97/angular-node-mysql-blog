@@ -8,7 +8,12 @@ import { BlogsService } from 'src/app/services/blogs/blogs.service';
 })
 export class AddPostFormComponent {
   constructor(private http:BlogsService){}
+  empty:boolean=false;
   onSubmit(postForm:any){
+    this.empty=false
+    if(postForm.value.title==""||postForm.value.body==""){
+      this.empty=true
+    }
     console.log(postForm.value)
     this.http.addBlog(postForm.value).subscribe(res=>{
       console.log(res)

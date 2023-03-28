@@ -4,8 +4,10 @@
     <p class="blog-comment-details">{{title}} by <span class="author">{{author}}</span> at {{created}}</p>
   </div>
   <p class="blog-comment-body">{{body}}</p>
-  <div class="blog-comment-footer">
-    <img src="assets/images/like.png" class="blog-comment-like"/>
-    <h6 class="blog-comment-like-count">5</h6>
+  <div  class="blog-comment-footer">
+    <span [ngStyle]="{'color':liked?'red':''}" (click)="like()" class="material-symbols-outlined blog-comment-like">
+      thumb_up
+      </span>
+    <h6 class="blog-comment-like-count">{{likes}}</h6>
   </div>
 </div>
