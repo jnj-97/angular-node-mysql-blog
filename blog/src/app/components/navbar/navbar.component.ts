@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 })
 export class NavbarComponent {
  blogs:Blogs[]=[]
+ profileClicked:boolean=false
   constructor(private http:BlogsService,private router:Router,private datepipe:DatePipe){}
   ngOnInit(){
 
@@ -32,6 +33,14 @@ export class NavbarComponent {
       }
     })
   }
-
-
+profileClick(){
+  this.profileClicked=!this.profileClicked
+}
+profilePage(){
+  this.router.navigate(['/me'])
+}
+logOut(){
+  localStorage.setItem('token','')
+  this.router.navigate(['/login'])
+}
 }

@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { AddHeaderService } from './services/interceptors/add-header.service';
 import { AddPostFormComponent } from './components/addPost/add-post-form/add-post-form.component';
 import { CommonModule, DatePipe } from '@angular/common';
+import { MeComponent } from './components/me/me.component';
+import { ProfileComponent } from './components/profile/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CommonModule, DatePipe } from '@angular/common';
     BlogsComponent,
     LoginComponent,
     SignupComponent,
-    AddPostFormComponent ],
+    AddPostFormComponent,
+    MeComponent,
+    ProfileComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

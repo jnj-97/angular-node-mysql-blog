@@ -111,3 +111,27 @@
     color:aquamarine;
     font-size: medium;
   }
+.profile{
+  align-items: baseline;
+  padding-right: 1vw;
+  padding-left: 2vw;
+  font-size: 2vw;
+}
+.profile:hover{
+  cursor: pointer;
+}
+.account-menu{
+  display:flex;
+  float: right;
+  background-color: bisque;
+  width:10%;
+  justify-content: center;
+}
+.account-menu li{
+  text-align:center;
+  display: block;
+}
+.account-menu li:hover{
+  background-color: aliceblue;
+  cursor: pointer;
+}

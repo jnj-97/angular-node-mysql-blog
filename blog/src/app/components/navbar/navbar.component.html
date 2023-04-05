@@ -10,15 +10,25 @@
   </div>
   <div class="navbar-search-container">
     <input type="text" class="navbar-search-input" placeholder="Search for Users or Posts" />
+    <span (click)="profileClick()" class="material-symbols-outlined profile">
+      account_circle
+      </span>
   </div>
   <button class="nav-toggle">
     <span class="sandwich-symbol navbar-toggle-icon"><i class="fas fa-bars"></i></span>
   </button>
 </nav>
+<div *ngIf="profileClicked" class="account-menu">
+
+  <ul>
+    <li (click)="profilePage()">My Profile</li>
+    <li (click)="logOut()">Log Out</li>
+  </ul>
+</div>
 <app-add-post-form class="add-post-form"/>
 <ul class="blog-list">
   <li *ngFor="let item of blogs" class="blog-list-item">
-    <app-blogs [author]="item.username" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" class="blog-item"/>
+    <app-blogs [profile_picture]="item.profile_picture" [author]="item.username" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" class="blog-item"/>
   </li>
 </ul>
 <footer>Created by <a href="https://github.com/karthiksatish159">Karthik Satish Telagareddy</a>, <a href="https://github.com/jnj-97">Nobin Johnson</a> and <a href="https://github.com/jagadeeswar300">Jagadeeswar Reddy</a> </footer>

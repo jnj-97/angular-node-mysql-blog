@@ -1,0 +1,24 @@
+<div (click)="goback()" class="back-button"><span class="material-symbols-outlined">
+  arrow_back
+  </span> Back to Home</div>
+<div class="flex-container">
+  <aside class="Sidebar">
+    <img  [src]="profilePicture" class="profile-picture"/>
+
+    <h1><strong>{{users.username}}</strong></h1>
+
+
+  </aside>
+  <main >
+    <h1>{{users.username}}'s Blogs</h1>
+    <div *ngIf="!users.blogs.length" style="color:red;">{{users.username}} haven't posted a blog yet <span class="material-symbols-outlined">
+      sentiment_dissatisfied
+      </span> .</div>
+    <ul class="blog-list">
+
+      <li *ngFor="let item of users.blogs" class="blog-list-item">
+        <app-blogs [author]="users.username" [profile_picture]="users.profile_picture" [title]="item.title" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" class="blog-item"/>
+      </li>
+    </ul>
+  </main>
+</div>

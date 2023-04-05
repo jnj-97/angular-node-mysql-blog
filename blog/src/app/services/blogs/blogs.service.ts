@@ -10,7 +10,7 @@ import { Blogs,likes,liked} from '../../interfaces/blogs';
 })
 export class BlogsService {
 
-  private baseURL:string="http://localhost:4000"
+  private baseURL:string="http://localhost:5000"
   constructor(private http:HttpClient) {}
   getBlogs():Observable<Blogs[]>{
     return this.http.get<Blogs[]>(`${this.baseURL}/blogs/home`)

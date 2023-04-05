@@ -9,7 +9,7 @@ import { Blogs } from 'src/app/interfaces/blogs';
 })
 
 export class AuthService {
-  private baseURL:string="http://localhost:4000"
+  private baseURL:string="http://localhost:5000"
   constructor(private http:HttpClient) {}
 
 register(body:JSON):Observable<Auth>{

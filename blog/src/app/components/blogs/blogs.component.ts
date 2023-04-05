@@ -15,7 +15,12 @@ export class BlogsComponent {
   @Input() id:string='';
   @Input() likes:number=0
   @Input() liked:boolean=false;
-  constructor(private http:BlogsService){}
+  @Input() profile_picture:string=''
+
+
+  constructor(private http:BlogsService){
+    console.log("profile_picture: ",this.profile_picture)
+  }
   like(){
     this.liked=!this.liked
     const blogData = { id: this.id };

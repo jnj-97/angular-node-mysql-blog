@@ -17,6 +17,7 @@ export class AddPostFormComponent {
     console.log(postForm.value)
     this.http.addBlog(postForm.value).subscribe(res=>{
       console.log(res)
+      location.reload()
     },
     err=>{console.log(err)})
 

@@ -3,7 +3,7 @@ const knex = require("../config/database");
 exports.getAllBlogs=(id)=>{
     return new Promise(async function(resolve,reject){
         try{
-            let data=await knex.select("b.id","b.title","b.body","b.created_time","u.username","u.profile_picture").from('blogs as b').join('users as u','b.author','=','u.user_id')
+            let data=await knex.select("b.id","b.title","b.body","b.created_time","u.username","u.profile_picture").from('blogs as b').join('users as u','b.author','=','u.user_id').orderBy('created_time','desc')
            for(let element of data)
            {
                 let likes= await knex('likes')
@@ -55,7 +55,7 @@ exports.likeBlog=(author,blog)=>{
     })
 }
 exports.checkLikes=(blog)=>{
-    return new Promise(async function (resolve,reject){
+    return new Promise(async function(resolve,reject){
         try{
             let likes= await knex('likes')
             .count('blog_like_id as count')
@@ -68,4 +68,31 @@ exports.checkLikes=(blog)=>{
         }
     }
     )
+}
+exports.getUserBlogs=(userid)=>{
+    return new Promise(async function(resolve,reject){
+        try{
+            let blogs=await knex('blogs').where('author',userid).orderBy('created_time','desc')
+            resolve(blogs)
+        }catch(err){
+            reject(err)
+        }
+    })
+}
+exports.checkLiked=(userid,blogid)=>{
+    return new Promise(async function(resolve,reject){
+        try{
+            console.log("userid,blogid: ",userid,blogid)
+            let liked= await knex('likes').where('user_like_id',userid).andWhere('blog_like_id',blogid)
+            console.log("liked: ",liked)
+            if(liked.length==0){
+                resolve(false)
+            }
+            else if(liked.length>0){
+                resolve(true)
+            }          
+        }catch(err){
+            reject(err)
+        }
+    })
 }
