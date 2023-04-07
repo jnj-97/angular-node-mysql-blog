@@ -28,7 +28,13 @@ export class UsersService {
   changepassword(body:JSON):Observable<liked>{
     return this.http.post<liked>(`${this.baseURL}/users/changepassword`,body)
   }
-  getOtherProfile(body:JSON):Observable<otherUser>{
-    return this.http.post<otherUser>(`${this.baseURL}/users/otherprofile`,body)
+  getOtherProfile(body:string):Observable<otherUser>{
+    return this.http.get<otherUser>(`${this.baseURL}/users/${body}`)
+  }
+  follow(body:string):Observable<liked>{
+    return this.http.post<liked>(`${this.baseURL}/users/follow`,body)
+  }
+  unfollow(body:string):Observable<liked>{
+    return this.http.post<liked>(`${this.baseURL}/users/unfollow`,body)
   }
 }

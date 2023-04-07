@@ -43,4 +43,16 @@ logOut(){
   localStorage.setItem('token','')
   this.router.navigate(['/login'])
 }
+follow(){
+  this.http.getFollowed().subscribe(res=>{
+    res.forEach(blog=>{
+      if(blog.created_time){
+      const date: Date = new Date(blog.created_time);
+      blog.created_time = this.datepipe.transform(date, "dd-MM-YYYY hh:mm a") || '';
+  }})
+  this.blogs=res
+})}
+reload(){
+  location.reload()
+}
 }

@@ -24,7 +24,7 @@ import { ProfileComponent } from './components/profile/profile/profile.component
     SignupComponent,
     AddPostFormComponent,
     MeComponent,
-    ProfileComponent ],
+    ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

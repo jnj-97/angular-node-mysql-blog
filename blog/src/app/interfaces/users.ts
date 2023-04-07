@@ -8,9 +8,7 @@ export interface User {
 }
 
 export interface otherUser{
-  email:string,
   profile_picture:string,
-  username:string,
   followed:boolean,
   message:string
   blogs:Blogs[]

@@ -98,3 +98,53 @@ exports.changepassword=(password_hash,id)=>{
         }
     })
 }
+exports.otherProfile=(username)=>{
+    return new Promise(async function(resolve,reject){
+        try{
+            let data=await knex('users as u').select('u.profile_picture','u.user_id').where('username',username);
+            resolve(data)
+        }catch(err){
+            console.log(err)
+            reject(err)
+        }
+    })
+}
+exports.checkFollowed=(otherid,id)=>{
+    return new Promise(async function(resolve,reject){
+        try{
+            let followed=await knex('followers').where('follower_id',id).andWhere('followee_id',otherid)
+            console.log("followed: ",followed)
+            if(followed.length>0){
+                resolve(true)
+            }
+            else{
+                resolve(false)
+            }
+        }catch(err){
+            console.log(err)
+            reject(err)
+        }
+    })
+}
+exports.follow=(username,id)=>{
+    return new Promise(async function(resolve,reject){
+        try{let username_id= await knex('users').where('username',username)
+        let follow=await knex('followers').insert({follower_id:id,followee_id:username_id[0].user_id})
+        resolve()
+    }catch(err){
+        console.log(err)
+        reject(err)
+    }
+    })
+}
+exports.unfollow=(username,id)=>{
+    return new Promise(async function(resolve,reject){
+        try{let username_id= await knex('users').where('username',username)
+        let unfollow=await knex('followers').where('follower_id',id).andWhere('followee_id',username_id[0].user_id).delete()
+        resolve()
+    }catch(err){
+        console.log(err)
+        reject(err)
+    }
+    })
+}

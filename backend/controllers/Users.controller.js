@@ -2,7 +2,6 @@ const UserModel=require('../models/users.model')
 const BlogsModel=require('../models/blogs.model')
 const utils=require('../utils/utils')
 const bcrypt=require('bcrypt')
-const moment=require('moment')
 exports.registerController=async (req,res)=>{
     try {
         console.log(req.body)
@@ -120,6 +119,58 @@ exports.changepassword=async (req,res)=>{
         let password_hash=utils.genPassword(req.body.newpassword)
         let password=await UserModel.changepassword(password_hash,req.user.id)
         res.status(200).json({message:"changed"})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message:"Unknown error occurred"+err})
+    }
+}
+exports.otherProfile=async (req,res)=>{
+    try{
+        let otherprofile=await UserModel.otherProfile(req.params.username)
+        console.log(otherprofile);
+        if(otherprofile.length>0)
+        {
+            let blogs=await BlogsModel.getUserBlogs(otherprofile[0].user_id)
+            console.log("1");
+        for(let blog of blogs){
+            console.log("2");
+            let likes=await BlogsModel.checkLikes(blog.id)
+            blog.likes=likes
+            let liked= await BlogsModel.checkLiked(req.user.id,blog.id)
+            blog.liked=liked
+        }
+        otherprofile[0].blogs=blogs
+        let followed=await UserModel.checkFollowed(otherprofile[0].user_id,req.user.id)
+        otherprofile[0].followed=followed
+        otherprofile[0].message="user exists"
+        delete otherprofile[0].user_id
+        console.log("3");
+        res.status(200).json(otherprofile[0])    
+    }
+    else if(otherprofile.length==0)
+        {
+            console.log("4");
+           res.status(200).json({message:"User doesnt exist"})
+        }
+    }
+    catch(err){
+        console.log(err)
+        res.status(500).json({message:"Unknown error occurred"+err})
+    }
+}
+exports.follow=async (req,res)=>{
+    try{
+        let follow=await UserModel.follow(req.body.username,req.user.id)
+        res.status(200).json({message:"followed"})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message:"Unknown error occurred"+err})
+    }
+}
+exports.unfollow=async (req,res)=>{
+    try{
+        let unfollow=await UserModel.unfollow(req.body.username,req.user.id)
+        res.status(200).json({message:"unfollowed"})
     }catch(err){
         console.log(err)
         res.status(500).json({message:"Unknown error occurred"+err})

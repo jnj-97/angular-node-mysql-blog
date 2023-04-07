@@ -15,6 +15,9 @@ export class BlogsService {
   getBlogs():Observable<Blogs[]>{
     return this.http.get<Blogs[]>(`${this.baseURL}/blogs/home`)
   }
+  getFollowed():Observable<Blogs[]>{
+    return this.http.get<Blogs[]>(`${this.baseURL}/blogs/followed`)
+  }
   addBlog(body:JSON):Observable<JSON>{
     return this.http.post<JSON>(`${this.baseURL}/blogs/addpost`,body)
   }
@@ -27,4 +30,5 @@ export class BlogsService {
   checkLikes(body:JSON):Observable<likes>{
     return this.http.post<likes>(`${this.baseURL}/blogs/checklikes`,body)
   }
+
 }

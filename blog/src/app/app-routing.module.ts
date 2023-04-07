@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:"signUp",component:SignupComponent},
 {path:"",redirectTo:"/login",pathMatch:"full"},
 {path:"me",component:MeComponent},
-{path:"users/:username",component:ProfileComponent}
+{path:"users/:username",component:ProfileComponent},
 ];
 
 @NgModule({

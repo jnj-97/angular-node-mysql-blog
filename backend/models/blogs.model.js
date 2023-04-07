@@ -18,7 +18,6 @@ exports.getAllBlogs=(id)=>{
                     element.liked=true
                 }          
            }
-           console.log(data)
            resolve(data)
         }catch(err){
             reject(err)
@@ -82,9 +81,7 @@ exports.getUserBlogs=(userid)=>{
 exports.checkLiked=(userid,blogid)=>{
     return new Promise(async function(resolve,reject){
         try{
-            console.log("userid,blogid: ",userid,blogid)
             let liked= await knex('likes').where('user_like_id',userid).andWhere('blog_like_id',blogid)
-            console.log("liked: ",liked)
             if(liked.length==0){
                 resolve(false)
             }
@@ -94,5 +91,43 @@ exports.checkLiked=(userid,blogid)=>{
         }catch(err){
             reject(err)
         }
+    })
+}
+exports.getFollowed=(id)=>{
+    return new Promise(async function(resolve,reject){
+        try{
+            let followed=await knex('followers').where('follower_id',id)
+            resolve(followed)
+        }catch(err){
+            console.log(err)
+            reject(err)
+        }
+    })
+}
+exports.getFollowedBlogs=(followed,id)=>{
+    return new Promise(async function(resolve,reject){
+        try{
+            let blogs=await knex.select("b.id","b.title","b.body","b.created_time","u.username","u.profile_picture").join('users as u','b.author','=','u.user_id').from('blogs as b').whereIn('b.author',followed.map(obj=>obj.followee_id)).orderBy('b.created_time','desc')
+            for(let element of blogs)
+           {
+                let likes= await knex('likes')
+                .count('blog_like_id as count')
+                .where('blog_like_id',element.id).first()
+                element.likes=likes.count
+                let liked=await knex('likes').where('blog_like_id',element.id).andWhere('user_like_id',id)
+                if(liked.length==0){
+                    element.liked=false
+                }
+                else if(liked.length>0){
+                    element.liked=true
+                }          
+           }
+           console.log("followed blogs: ",blogs )
+            resolve(blogs)
+        }catch(err){
+            console.log(err)
+            reject(err)
+        }
+
     })
 }
