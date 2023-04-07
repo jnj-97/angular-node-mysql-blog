@@ -10,4 +10,5 @@
       </span>
     <h6 class="blog-comment-like-count">{{likes}}</h6>
   </div>
+  <div class="addMessage"><img src="data:image/png;base64,{{profile_picture}}" class="blog-comment-logo"/><input type="text" maxlength="255" (keyup.enter)="addComment($event)" placeholder="Add a comment"/></div>
 </div>

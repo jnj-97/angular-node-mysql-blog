@@ -40,5 +40,8 @@ export class BlogsComponent {
     }
   })
   }
+  addComment(event:any){
+    console.log(event)
+  }
 
 }

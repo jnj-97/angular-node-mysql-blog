@@ -2,9 +2,9 @@
   <p class="m-4 text-2xl">Write a new Post!</p>
 <form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
   <label class="m-4 text-lg font-semibold">Title</label><br/>
-  <input name="title" class="m-4 w-11/12 rounded-md p-4" ngModel placeholder="Title" type="text" maxlength="30"/><br/>
+  <input name="title" class="m-4 w-11/12 rounded-md p-4" ngModel placeholder="Title" type="text" maxlength="50"/><br/>
   <label class="m-4 text-lg">Write a post</label><br/>
-  <textarea name="body" class="m-4 w-11/12 rounded-md p-8"  ngModel placeholder="Type your post here" type="text" rows="3" cols="50" maxlength="150"></textarea><br/>
+  <textarea name="body" class="m-4 w-11/12 rounded-md p-8"  ngModel placeholder="Type your post here" type="text" rows="3" cols="50" maxlength="255"></textarea><br/>
   <div class="justify-end">
   <button class="m-4 p-4 rounded-sm bg-green-500" type="submit">Post</button>
   </div>
