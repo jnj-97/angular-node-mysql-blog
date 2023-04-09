@@ -13,3 +13,7 @@ export interface otherUser{
   message:string
   blogs:Blogs[]
 }
+export interface searchUser{
+  profile_picture:string,
+  username:string,
+}

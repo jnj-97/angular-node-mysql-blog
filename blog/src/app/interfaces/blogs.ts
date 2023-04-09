@@ -1,3 +1,4 @@
+import { Comment } from "./comment"
 export interface Blogs {
   title:string,
   body:string,
@@ -6,7 +7,8 @@ export interface Blogs {
   profile_picture:string,
   likes:number,
   liked:boolean,
-  id:string
+  id:string,
+  comments:Comment[]
 }
 export interface likes{
   likes:number

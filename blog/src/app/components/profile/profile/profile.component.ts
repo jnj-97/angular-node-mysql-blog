@@ -30,6 +30,12 @@ ngOnInit(){
     for(let blog of this.user.blogs){
       const date: Date = new Date(blog.created_time);
       blog.created_time = this.datepipe.transform(date, "dd-MM-YYYY hh:mm a") || '';
+      blog.comments.forEach(comment=>{
+        if(comment.created_at){
+          const comment_date: Date = new Date(comment.created_at);
+          comment.created_at = this.datepipe.transform(comment_date, "dd-MM-YYYY hh:mm a") || '';
+        }
+      })
     }
 }})
 }

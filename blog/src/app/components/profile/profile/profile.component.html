@@ -22,7 +22,7 @@
     <ul class="blog-list">
 
       <li *ngFor="let item of user.blogs" class="blog-list-item">
-        <app-blogs [author]="username" [profile_picture]="user.profile_picture" [title]="item.title" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" class="blog-item"/>
+        <app-blogs [author]="username" [profile_picture]="user.profile_picture" [title]="item.title" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" [comments]="item.comments" class="blog-item"/>
       </li>
     </ul>
   </main>

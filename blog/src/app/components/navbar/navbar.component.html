@@ -1,6 +1,7 @@
 <nav class="navbar">
   <div class="nav-brand">
     <a href="#"><img src="assets/images/bird-logo.png" alt="GitHub Logo"></a>
+    <h1 class="heading">Timepass Blogs</h1>
   </div>
   <div class="nav-links">
     <ul>
@@ -9,10 +10,19 @@
     </ul>
   </div>
   <div class="navbar-search-container">
-    <input type="text" class="navbar-search-input" placeholder="Search for Users or Posts" />
-    <span (click)="profileClick()" class="material-symbols-outlined profile">
-      account_circle
-      </span>
+    <input type="text" class="navbar-search-input" (input)="searchUser($event)" placeholder="Search for Users" />
+    <div *ngIf="results">
+      <ul>
+        <li *ngIf="searchUsers.length==0" class="no-users">No Users Found</li>
+        <li class="results" *ngFor="let item of searchUsers">
+          <a href="/users/{{item.username}}"><div class="result" >
+          <img src="data:image/png;base64,{{item.profile_picture}}"/><h1>{{item.username}}</h1>
+        </div></a>
+        </li>
+      </ul>
+    </div>
+    <img class="profilePicture" (click)="profileClick()" [src]="profilePicture"/>
+
   </div>
   <button class="nav-toggle">
     <span class="sandwich-symbol navbar-toggle-icon"><i class="fas fa-bars"></i></span>
@@ -28,7 +38,7 @@
 <app-add-post-form class="add-post-form"/>
 <ul class="blog-list">
   <li *ngFor="let item of blogs" class="blog-list-item">
-    <app-blogs [profile_picture]="item.profile_picture" [author]="item.username" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" class="blog-item"/>
+    <app-blogs [profile_picture]="item.profile_picture" [author]="item.username" [user]="profilePicture" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" [comments]="item.comments"  class="blog-item"/>
   </li>
 </ul>
 <footer>Created by <a href="https://github.com/karthiksatish159">Karthik Satish Telagareddy</a>, <a href="https://github.com/jnj-97">Nobin Johnson</a> and <a href="https://github.com/jagadeeswar300">Jagadeeswar Reddy</a> </footer>

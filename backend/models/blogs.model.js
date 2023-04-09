@@ -9,6 +9,9 @@ exports.getAllBlogs=(id)=>{
                 let likes= await knex('likes')
                 .count('blog_like_id as count')
                 .where('blog_like_id',element.id).first()
+                let comments= await knex.select('comments.message','comments.created_at', 'users.username','users.profile_picture').from('comments').innerJoin('users', 'comments.author', 'users.user_id').where('comments.blog_id', element.id).orderBy('comments.created_at','desc')
+                console.log("comments: ",comments)
+                element.comments=comments
                 element.likes=likes.count
                 let liked=await knex('likes').where('blog_like_id',element.id).andWhere('user_like_id',id)
                 if(liked.length==0){
@@ -72,6 +75,10 @@ exports.getUserBlogs=(userid)=>{
     return new Promise(async function(resolve,reject){
         try{
             let blogs=await knex('blogs').where('author',userid).orderBy('created_time','desc')
+            for(let element of blogs){
+                let comments= await knex.select('comments.message','comments.created_at', 'users.username','users.profile_picture').from('comments').innerJoin('users', 'comments.author', 'users.user_id').where('comments.blog_id', element.id).orderBy('comments.created_at','desc')
+                element.comments=comments
+            }
             resolve(blogs)
         }catch(err){
             reject(err)
@@ -113,6 +120,8 @@ exports.getFollowedBlogs=(followed,id)=>{
                 let likes= await knex('likes')
                 .count('blog_like_id as count')
                 .where('blog_like_id',element.id).first()
+                let comments= await knex.select('comments.message','comments.created_at', 'users.username','users.profile_picture').from('comments').innerJoin('users', 'comments.author', 'users.user_id').where('comments.blog_id', element.id).orderBy('comments.created_at','desc')
+                element.comments=comments
                 element.likes=likes.count
                 let liked=await knex('likes').where('blog_like_id',element.id).andWhere('user_like_id',id)
                 if(liked.length==0){
@@ -129,5 +138,37 @@ exports.getFollowedBlogs=(followed,id)=>{
             reject(err)
         }
 
+    })
+}
+exports.addComment=(comment,blog,id)=>{
+    return new Promise(async function(resolve,reject){
+        try{let commentAdded=await knex('comments').insert({blog_id:blog,message:comment,author:id})
+        resolve()
+    }catch(err){
+        console.log(err)
+        reject(err)
+    }
+    })
+}
+exports.getComments=(blog_id)=>{
+    return new Promise(async function(resolve,reject){
+        try{
+            let comments= await knex.select('comments.message','comments.created_at', 'users.username','users.profile_picture').from('comments').innerJoin('users', 'comments.author', 'users.user_id').where('comments.blog_id', blog_id).orderBy('comments.created_at','desc')
+            resolve(comments)
+        }catch(err){
+            console.log(err)
+            reject(err)
+        }
+    })
+}
+exports.likeList=(blog_id)=>{
+    return new Promise(async function(resolve,reject){
+        try{
+            let likelist= await knex('likes').join('blogs', 'likes.blog_like_id', '=', 'blogs.id').join('users', 'likes.user_like_id', '=', 'users.user_id').select('users.username', 'users.profile_picture').where('likes.blog_like_id', '=', blog_id)
+            resolve(likelist)
+        }catch(err){
+            console.log(err)
+            reject(err)
+        }   
     })
 }

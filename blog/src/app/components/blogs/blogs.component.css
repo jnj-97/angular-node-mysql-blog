@@ -47,17 +47,40 @@
     font-size: 14px;
     font-weight: bold;
 }
+.blog-comment-like-count:hover{
+  cursor: pointer;
+}
 .blog-comment-like:hover{
   cursor:pointer;
 
 }
 .addMessage{
   display: flex;
-  background-color: white;
+  margin:10px;
 }
 .addMessage>input{
   border-radius: 10px;
   border: 2px solid black;
   padding: 10px;
   color: chocolate;
+  width: 80%;
+}
+.addMessage>img{
+  border-radius: 100%;
+  border: 1px solid black;
+}
+.noLikes{
+  color:red;
+}
+.like-item{
+  padding:10px;
+  color:white;
+  background-color: black;
+  display: flex;
+  width:20%;
+}
+.like-item>img{
+  border-radius: 100%;
+  height: 3vw;
+  width: 3vw;
 }

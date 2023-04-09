@@ -59,3 +59,22 @@ exports.getFollowed=async (req,res)=>{
         res.status(500).json({message:"Unknown error occurred: "+err})
     }
 }
+exports.addComment= async (req,res)=>{
+    try{
+        let comment=await BlogModel.addComment(req.body.message,req.body.id,req.user.id)
+        let comments=await BlogModel.getComments(req.body.id)
+        res.status(200).json(comments)
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message:"Unknown error occurred: "+err})
+    }
+}
+exports.likeList=async(req,res)=>{
+    try{
+        let list=await BlogModel.likeList(req.body.id)
+        res.status(200).json(list)
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message:"Unknown error occurred"+err})
+    }
+}

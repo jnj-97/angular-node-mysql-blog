@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User,otherUser } from 'src/app/interfaces/users';
+import { User,otherUser, searchUser } from 'src/app/interfaces/users';
 import {liked} from 'src/app/interfaces/blogs'
 @Injectable({
   providedIn: 'root'
@@ -36,5 +36,11 @@ export class UsersService {
   }
   unfollow(body:string):Observable<liked>{
     return this.http.post<liked>(`${this.baseURL}/users/unfollow`,body)
+  }
+  getProfileImage():Observable<liked>{
+    return this.http.get<liked>(`${this.baseURL}/users/profile/getProfilePicture`)
+  }
+  searchUsers(body:string):Observable<searchUser[]>{
+    return this.http.get<searchUser[]>(`${this.baseURL}/users/search/${body}`)
   }
 }

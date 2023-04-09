@@ -14,6 +14,7 @@ import { AddPostFormComponent } from './components/addPost/add-post-form/add-pos
 import { CommonModule, DatePipe } from '@angular/common';
 import { MeComponent } from './components/me/me.component';
 import { ProfileComponent } from './components/profile/profile/profile.component';
+import { CommentComponent } from './components/comments/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProfileComponent } from './components/profile/profile/profile.component
     SignupComponent,
     AddPostFormComponent,
     MeComponent,
-    ProfileComponent],
+    ProfileComponent,
+    CommentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

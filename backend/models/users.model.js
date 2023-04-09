@@ -148,3 +148,25 @@ exports.unfollow=(username,id)=>{
     }
     })
 }
+exports.getProfilePicture=(id)=>{
+    return new Promise(async function(resolve,reject){
+        try{
+            profilePicture=await knex('users').select('profile_picture').where('user_id',id)
+            resolve(profilePicture[0].profile_picture)
+        }catch(err){
+            console.log(err)
+            reject(err)
+        }
+    })
+}
+exports.search=(searchValue)=>{
+    return new Promise(async function(resolve,reject){
+        try{
+            searchResults=await knex('users').where('username', 'like', `%${searchValue}%`).select('username','profile_picture')
+            resolve(searchResults)
+        }catch(err){
+            console.log(err)
+            reject(err)
+        }
+    })
+}

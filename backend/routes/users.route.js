@@ -1,5 +1,4 @@
 const passport = require("passport")
-let check=require('../index.js');
 module.exports=app=>{
 const UserController=require("../controllers/Users.controller")
 //common routes
@@ -7,6 +6,8 @@ app.post('/users/register',UserController.registerController)
 app.post('/users/login',UserController.loginController)
 app.get('/users/getprofile',passport.authenticate('jwt',{session:false}),UserController.getProfileController)
 app.get('/users/:username',passport.authenticate('jwt',{session:false}),UserController.otherProfile)
+app.get('/users/profile/getProfilePicture',passport.authenticate('jwt',{session:false}),UserController.getProfilePicture)
+app.get('/users/search/:search',UserController.search)
 //post requests
 app.post('/users/changeprofilepicture',passport.authenticate('jwt',{session:false}),UserController.changeProfilePicture)
 app.post('/users/checkusername',UserController.checkusername)

@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Auth } from 'src/app/interfaces/auth';
+import { Comment } from 'src/app/interfaces/comment';
+import { searchUser } from 'src/app/interfaces/users';
 import { Blogs,likes,liked} from '../../interfaces/blogs';
 
 
@@ -29,6 +31,12 @@ export class BlogsService {
   }
   checkLikes(body:JSON):Observable<likes>{
     return this.http.post<likes>(`${this.baseURL}/blogs/checklikes`,body)
+  }
+  addComment(body:JSON):Observable<Comment[]>{
+    return this.http.post<Comment[]>(`${this.baseURL}/blogs/addComment`,body)
+  }
+  getLikes(body:JSON):Observable<searchUser[]>{
+   return this.http.post<searchUser[]>(`${this.baseURL}/blogs/likeList`,body)
   }
 
 }

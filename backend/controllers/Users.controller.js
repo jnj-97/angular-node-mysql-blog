@@ -2,6 +2,7 @@ const UserModel=require('../models/users.model')
 const BlogsModel=require('../models/blogs.model')
 const utils=require('../utils/utils')
 const bcrypt=require('bcrypt')
+const { default: knex } = require('knex')
 exports.registerController=async (req,res)=>{
     try {
         console.log(req.body)
@@ -58,7 +59,6 @@ exports.getProfileController=async (req,res)=>{
             blog.liked=liked
         }
         user.blogs=blogs
-        console.log("user: ",user)
         res.send(user)
     }
     catch(err){
@@ -171,6 +171,29 @@ exports.unfollow=async (req,res)=>{
     try{
         let unfollow=await UserModel.unfollow(req.body.username,req.user.id)
         res.status(200).json({message:"unfollowed"})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message:"Unknown error occurred"+err})
+    }
+}
+exports.getProfilePicture=async (req,res)=>{
+    console.log("get profile route hit")
+    try{
+        
+        let profilePicture=await UserModel.getProfilePicture(req.user.id)
+        console.log("profilePicture: ",profilePicture[0].profile_picture)
+        res.status(200).json({message:profilePicture})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message:"Unknown Error Occurred"+err})
+    }
+}
+exports.search=async (req,res)=>{
+    let search=req.params.search
+    try{
+        let searchResults=await UserModel.search(search)
+        console.log("searchResults: ",searchResults)
+        res.status(200).json(searchResults)
     }catch(err){
         console.log(err)
         res.status(500).json({message:"Unknown error occurred"+err})
