@@ -4,6 +4,7 @@ const UserController=require("../controllers/Users.controller")
 //common routes
 app.post('/users/register',UserController.registerController)
 app.post('/users/login',UserController.loginController)
+app.get('/users/validate',passport.authenticate('jwt',{session:false}),UserController.validate)
 app.get('/users/getprofile',passport.authenticate('jwt',{session:false}),UserController.getProfileController)
 app.get('/users/:username',passport.authenticate('jwt',{session:false}),UserController.otherProfile)
 app.get('/users/profile/getProfilePicture',passport.authenticate('jwt',{session:false}),UserController.getProfilePicture)

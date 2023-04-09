@@ -9,6 +9,13 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class LoginComponent {
   constructor(private http:AuthService,private router:Router){}
+  ngOnInit(){
+    this.http.validateToken().subscribe(res=>{
+      if(res.message=="valid"){
+        this.router.navigate(['/home'])
+      }
+    })
+  }
 loginError:string=""
 loginSubmit(loginForm:any){
   console.log(loginForm.value)

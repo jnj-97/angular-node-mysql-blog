@@ -199,3 +199,6 @@ exports.search=async (req,res)=>{
         res.status(500).json({message:"Unknown error occurred"+err})
     }
 }
+exports.validate=async (req,res)=>{
+    res.status(200).json({message:"valid"})
+}

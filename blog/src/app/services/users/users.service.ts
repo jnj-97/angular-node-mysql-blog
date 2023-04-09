@@ -7,40 +7,40 @@ import {liked} from 'src/app/interfaces/blogs'
   providedIn: 'root'
 })
 export class UsersService {
-  private baseURL:string="http://localhost:5000"
+  private baseURL:string="http://localhost:5000/users/"
   constructor(private http:HttpClient) { }
 
   getProfile():Observable<User>{
-    return this.http.get<User>(`${this.baseURL}/users/getProfile`)
+    return this.http.get<User>(`${this.baseURL}getProfile`)
   }
   changeProfilePicture(body:JSON):Observable<liked>{
-    return this.http.post<liked>(`${this.baseURL}/users/changeprofilepicture`,body)
+    return this.http.post<liked>(`${this.baseURL}changeprofilepicture`,body)
   }
   checkusername(body:JSON):Observable<liked>{
-    return this.http.post<liked>(`${this.baseURL}/users/checkusername`,body)
+    return this.http.post<liked>(`${this.baseURL}checkusername`,body)
   }
   changeusername(body:JSON):Observable<liked>{
-    return this.http.post<liked>(`${this.baseURL}/users/changeusername`,body)
+    return this.http.post<liked>(`${this.baseURL}changeusername`,body)
   }
   checkpassword(body:JSON):Observable<liked>{
-    return this.http.post<liked>(`${this.baseURL}/users/checkpassword`,body)
+    return this.http.post<liked>(`${this.baseURL}checkpassword`,body)
   }
   changepassword(body:JSON):Observable<liked>{
-    return this.http.post<liked>(`${this.baseURL}/users/changepassword`,body)
+    return this.http.post<liked>(`${this.baseURL}changepassword`,body)
   }
   getOtherProfile(body:string):Observable<otherUser>{
-    return this.http.get<otherUser>(`${this.baseURL}/users/${body}`)
+    return this.http.get<otherUser>(`${this.baseURL}${body}`)
   }
   follow(body:string):Observable<liked>{
-    return this.http.post<liked>(`${this.baseURL}/users/follow`,body)
+    return this.http.post<liked>(`${this.baseURL}follow`,body)
   }
   unfollow(body:string):Observable<liked>{
-    return this.http.post<liked>(`${this.baseURL}/users/unfollow`,body)
+    return this.http.post<liked>(`${this.baseURL}unfollow`,body)
   }
   getProfileImage():Observable<liked>{
-    return this.http.get<liked>(`${this.baseURL}/users/profile/getProfilePicture`)
+    return this.http.get<liked>(`${this.baseURL}profile/getProfilePicture`)
   }
   searchUsers(body:string):Observable<searchUser[]>{
-    return this.http.get<searchUser[]>(`${this.baseURL}/users/search/${body}`)
+    return this.http.get<searchUser[]>(`${this.baseURL}search/${body}`)
   }
 }

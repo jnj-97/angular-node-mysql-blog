@@ -12,31 +12,31 @@ import { Blogs,likes,liked} from '../../interfaces/blogs';
 })
 export class BlogsService {
 
-  private baseURL:string="http://localhost:5000"
+  private baseURL:string="http://localhost:5000/blogs/"
   constructor(private http:HttpClient) {}
   getBlogs():Observable<Blogs[]>{
-    return this.http.get<Blogs[]>(`${this.baseURL}/blogs/home`)
+    return this.http.get<Blogs[]>(`${this.baseURL}home`)
   }
   getFollowed():Observable<Blogs[]>{
-    return this.http.get<Blogs[]>(`${this.baseURL}/blogs/followed`)
+    return this.http.get<Blogs[]>(`${this.baseURL}followed`)
   }
   addBlog(body:JSON):Observable<JSON>{
-    return this.http.post<JSON>(`${this.baseURL}/blogs/addpost`,body)
+    return this.http.post<JSON>(`${this.baseURL}addpost`,body)
   }
   likeBlog(body: JSON): Observable<liked> {
     let response:any;
-    response=this.http.post<liked>(`${this.baseURL}/blogs/likeblog`, body)
+    response=this.http.post<liked>(`${this.baseURL}likeblog`, body)
     console.log("response: ",response)
     return response
   }
   checkLikes(body:JSON):Observable<likes>{
-    return this.http.post<likes>(`${this.baseURL}/blogs/checklikes`,body)
+    return this.http.post<likes>(`${this.baseURL}checklikes`,body)
   }
   addComment(body:JSON):Observable<Comment[]>{
-    return this.http.post<Comment[]>(`${this.baseURL}/blogs/addComment`,body)
+    return this.http.post<Comment[]>(`${this.baseURL}addComment`,body)
   }
   getLikes(body:JSON):Observable<searchUser[]>{
-   return this.http.post<searchUser[]>(`${this.baseURL}/blogs/likeList`,body)
+   return this.http.post<searchUser[]>(`${this.baseURL}likeList`,body)
   }
 
 }
