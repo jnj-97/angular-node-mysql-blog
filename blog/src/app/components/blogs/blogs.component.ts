@@ -10,6 +10,7 @@ import { searchUser } from 'src/app/interfaces/users';
   styleUrls: ['./blogs.component.css']
 })
 export class BlogsComponent {
+  name:string=''
   likesDisplay:boolean=false
   likeList:searchUser[]=[];
   @Input() author:string='';
@@ -45,10 +46,11 @@ export class BlogsComponent {
     }
   })
   }
-  addComment(event:any){
-    if(event.target.value==""){}
+  addComment(){
+  console.log("Comment: ",this.name)
+    if(this.name==""){}
     else{
-    const blogData = { id: this.id,message:event.target.value };
+    const blogData = { id: this.id,message:this.name };
   const jsonData = JSON.stringify(blogData);
   const jsonObject = JSON.parse(jsonData);
     this.http.addComment(jsonObject).subscribe(res=>{
@@ -59,10 +61,10 @@ export class BlogsComponent {
         }
       }
       this.comments=res
-      event.target.value=""
+      this.name=""
     })
-
-  }}
+ }
+}
   showLikes(){
     const blogData = { id: this.id};
     const jsonData = JSON.stringify(blogData);

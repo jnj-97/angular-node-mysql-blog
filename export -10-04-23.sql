@@ -30,7 +30,7 @@ CREATE TABLE `blogs` (
   `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `blogs` (
 
 LOCK TABLES `blogs` WRITE;
 /*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
-INSERT INTO `blogs` VALUES (1,'My First Post','Hello me. This post is just for testing. Welcome to the platform.',3,'2023-03-15 16:40:18'),(6,'My 2nd post','Posting this for testing the me page',3,'2023-03-30 07:19:01'),(7,'My 2nd post','Posting this for testing the me page',3,'2023-03-30 07:19:02'),(8,'My First post in another acc','This post is for testing the follower feature',4,'2023-04-06 23:11:15');
+INSERT INTO `blogs` VALUES (1,'My First Post','Hello me. This post is just for testing. Welcome to the platform.',3,'2023-03-15 16:40:18'),(6,'My 2nd post','Posting this for testing the me page',3,'2023-03-30 07:19:01'),(7,'My 2nd post','Posting this for testing the me page',3,'2023-03-30 07:19:02'),(8,'My First post in another acc','This post is for testing the follower feature',4,'2023-04-06 23:11:15'),(9,'Post','Refresh',4,'2023-04-10 11:03:10');
 /*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `comments` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,8,'This comment is for testing the message feature',4,'2023-04-07 18:15:11'),(3,8,'This comment is for checking whether multiple comments are displayed properly',4,'2023-04-09 13:04:42'),(4,8,'This is again created to check the previous comment feature',4,'2023-04-09 13:07:40'),(5,8,'Checking if comments list is fixed',4,'2023-04-09 13:11:08');
+INSERT INTO `comments` VALUES (1,8,'This comment is for testing the message feature',4,'2023-04-07 18:15:11'),(3,8,'This comment is for checking whether multiple comments are displayed properly',4,'2023-04-09 13:04:42'),(4,8,'This is again created to check the previous comment feature',4,'2023-04-09 13:07:40'),(5,8,'Checking if comments list is fixed',4,'2023-04-09 13:11:08'),(6,6,'Checking if comment is being added after changes',4,'2023-04-10 10:32:46'),(7,6,'Checking if comment is being added after changes',4,'2023-04-10 10:32:46'),(8,6,'Hello',4,'2023-04-10 10:33:18'),(9,6,'Hello',4,'2023-04-10 10:33:18');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,4 +153,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-09 22:54:25
+-- Dump completed on 2023-04-10 22:58:05

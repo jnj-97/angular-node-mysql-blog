@@ -31,6 +31,7 @@ exports.addBlog=(blog)=>{
     return new Promise(async function(resolve,reject){
         try{
             let data=await knex('blogs').insert(blog)
+            resolve()
         }catch(err){
             console.log(err)
             reject(err)

@@ -38,7 +38,7 @@
 <app-add-post-form class="add-post-form"/>
 <ul class="blog-list">
   <li *ngFor="let item of blogs" class="blog-list-item">
-    <app-blogs [profile_picture]="item.profile_picture" [author]="item.username" [user]="profilePicture" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" [comments]="item.comments"  class="blog-item"/>
+    <app-blogs [title]="item.title" [profile_picture]="item.profile_picture" [author]="item.username" [user]="profilePicture" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" [comments]="item.comments"  class="blog-item"/>
   </li>
 </ul>
 <footer>Developed by <a href="https://github.com/karthiksatish159">Karthik Satish Telagareddy</a>, <a href="https://github.com/jnj-97">Nobin Johnson</a> and <a href="https://github.com/jagadeeswar300">Jagadeeswar Reddy</a><br/>Logo by <a href="https://www.instagram.com/_limitless_colour_trails_/">_limitless_colour_trails_</a> </footer>

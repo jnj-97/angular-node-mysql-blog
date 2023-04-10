@@ -14,12 +14,11 @@ export class AddPostFormComponent {
     if(postForm.value.title==""||postForm.value.body==""){
       this.empty=true
     }
-    console.log(postForm.value)
     this.http.addBlog(postForm.value).subscribe(res=>{
       console.log(res)
       location.reload()
-    },
-    err=>{console.log(err)})
+      console.log("line after reload line")
+    })
 
   }
 }
