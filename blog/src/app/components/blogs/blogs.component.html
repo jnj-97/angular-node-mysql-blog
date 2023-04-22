@@ -20,7 +20,7 @@
   </div>
   <div class="addMessage">
     <img [src]="user" class="blog-comment-logo"/>
-  <form (ngSubmit)="addComment()">
+  <form >
     <input type="text" maxlength="255" [(ngModel)]="name" name="name" (keydown.enter)="addComment()" placeholder="Add a comment"/>
   </form>
   </div>

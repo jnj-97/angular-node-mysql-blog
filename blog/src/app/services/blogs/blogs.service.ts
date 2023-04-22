@@ -33,6 +33,7 @@ export class BlogsService {
     return this.http.post<likes>(`${this.baseURL}checklikes`,body)
   }
   addComment(body:JSON):Observable<Comment[]>{
+    console.log("addComment called")
     return this.http.post<Comment[]>(`${this.baseURL}addComment`,body)
   }
   getLikes(body:JSON):Observable<searchUser[]>{

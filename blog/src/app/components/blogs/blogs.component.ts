@@ -54,6 +54,7 @@ export class BlogsComponent {
   const jsonData = JSON.stringify(blogData);
   const jsonObject = JSON.parse(jsonData);
     this.http.addComment(jsonObject).subscribe(res=>{
+
       for(let comment of res){
         if(comment.created_at){
           const comment_date: Date = new Date(comment.created_at);
