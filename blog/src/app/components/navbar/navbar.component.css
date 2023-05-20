@@ -1,3 +1,4 @@
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -6,7 +7,12 @@
     background-color: #24292e;
     color: #fff;
     font-size: 16px;
+    height: 70px;
   }
+.navbar-search-container
+{
+  position: relative;
+}
 .nav-brand{
   display: flex;
 }
@@ -20,6 +26,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    justify-content: center;
   }
 
   .nav-links li {
@@ -29,7 +36,13 @@
   .nav-links a {
     color: #fff;
     text-decoration: none;
+    font-size: large;
     padding: 10px;
+    transition: all 0.3s ease;
+  }
+  .nav-links a:hover {
+      color: #007bff;
+      font-size: larger;
   }
 
   .nav-icons {
@@ -51,14 +64,24 @@
     margin-right: 10px;
     font-size: 18px;
   }
-
-  .navbar-search-input {
-    padding: 5px;
+  .navbar .navbar-search-container .navbar-search-input {
+    position: relative;
+    margin-right: 10px;
+    padding: 5px 10px;
     border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    color:black;
+    border-radius: 7px;
+    font-size: 16px;
     width: 300px;
+    color:black;
+  }
+  .navbar .navbar-search-container .results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    z-index: 999;
   }
   .navbar-toggle-icon {
     font-size: 24px;
@@ -106,7 +129,8 @@
     position:fixed;
     bottom: 0;
     width: 100%;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
     color: beige;
     text-align: center;
     font-family: Brush Script Std, cursive;
@@ -124,7 +148,7 @@
 .profile:hover{
   cursor: pointer;
 }
-.account-menu{
+/* .account-menu{
   display:flex;
   float: right;
   background-color: bisque;
@@ -138,7 +162,40 @@
 .account-menu li:hover{
   background-color: aliceblue;
   cursor: pointer;
+} */
+.account-menu {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
 }
+
+.account-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.account-menu li {
+  font-size: medium;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.account-menu li:hover {
+  background-color: white;
+  color: black;
+}
+
 a{
   cursor: pointer;
 }

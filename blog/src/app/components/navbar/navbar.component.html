@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="nav-brand">
-    <a href="#"><img src="assets/images/bird-logo.png" alt="GitHub Logo"></a>
+    <a href="#" class = "logo"><img src="assets/images/bird-logo.png" alt="GitHub Logo"></a>
     <h1 class="heading">Timepass Blogs</h1>
   </div>
   <div class="nav-links">
@@ -21,12 +21,11 @@
         </li>
       </ul>
     </div>
-    <img class="profilePicture" (click)="profileClick()" [src]="profilePicture"/>
-
   </div>
   <button class="nav-toggle">
     <span class="sandwich-symbol navbar-toggle-icon"><i class="fas fa-bars"></i></span>
   </button>
+  <img class="profilePicture" (click)="profileClick()" [src]="profilePicture"/>
 </nav>
 <div *ngIf="profileClicked" class="account-menu">
 

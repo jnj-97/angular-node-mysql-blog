@@ -34,7 +34,7 @@
   
   .form-btn {
     background-color: #2ea44f;
-    color: #333;
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -67,6 +67,7 @@
     color: red;
     margin-top: 10px;
     font-size: 16px;
+    text-align: center;
   }
   
 
