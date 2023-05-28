@@ -3,7 +3,7 @@
     <a href="#" class = "logo"><img src="assets/images/bird-logo.png" alt="GitHub Logo"></a>
     <h1 class="heading">Timepass Blogs</h1>
   </div>
-  <div class="nav-links">
+  <div class="nav-links" [class.show]="sandwitchClicked">
     <ul>
       <li><a (click)="reload()" >Home</a></li>
       <li><a (click)="follow()" >Followed</a></li>
@@ -22,7 +22,7 @@
       </ul>
     </div>
   </div>
-  <button class="nav-toggle">
+  <button class="nav-toggle" (click)="toggleNav()">
     <span class="sandwich-symbol navbar-toggle-icon"><i class="fas fa-bars"></i></span>
   </button>
   <img class="profilePicture" (click)="profileClick()" [src]="profilePicture"/>

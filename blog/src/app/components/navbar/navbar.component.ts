@@ -15,6 +15,7 @@ export class NavbarComponent {
  blogs:Blogs[]=[]
  results:boolean=false;
  profileClicked:boolean=false;
+ sandwitchClicked:boolean = false;
  searchUsers:searchUser[]=[];
  profilePicture:string='../../../assets/images/account.png'
   constructor(private http:BlogsService,private userService:UsersService,private router:Router,private datepipe:DatePipe){}
@@ -52,7 +53,11 @@ export class NavbarComponent {
     })
   }
 profileClick(){
-  this.profileClicked=!this.profileClicked
+  this.profileClicked = !this.profileClicked
+}
+
+toggleNav() {
+  this.sandwitchClicked = !this.sandwitchClicked;
 }
 profilePage(){
   this.router.navigate(['/me'])
