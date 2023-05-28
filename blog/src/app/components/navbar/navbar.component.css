@@ -101,8 +101,7 @@
       cursor: pointer;
     }
     .nav-links.show {
-      display: flex;
-      flex-direction: column;
+      display:block;
       position: absolute;
       top: 4rem;
       left: 0;
@@ -110,9 +109,34 @@
       background-color: #24292e;
       z-index: 1;
     }
+    .nav-links.show ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 0;
+      margin: 0;
+      list-style: none;
+    }
 
     .nav-links.show li {
       margin: 1rem;
+    }
+    .navbar-search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .navbar-search-input {
+      width: 80%; 
+      max-width: 200px;
+      padding: 0.5rem;
+      font-size: 14px; 
+      margin-right:30%;
+    }
+    .profilePicture{
+      width: 32px;
+      height:32px;
     }
   }
 
@@ -148,21 +172,6 @@
 .profile:hover{
   cursor: pointer;
 }
-/* .account-menu{
-  display:flex;
-  float: right;
-  background-color: bisque;
-  width:10%;
-  justify-content: center;
-}
-.account-menu li{
-  text-align:center;
-  display: block;
-}
-.account-menu li:hover{
-  background-color: aliceblue;
-  cursor: pointer;
-} */
 .account-menu {
   position: absolute;
   top: 60px;
@@ -200,10 +209,11 @@ a{
   cursor: pointer;
 }
 .profilePicture{
-  height: 3vw;
-  width: 3vw;
+  height: 32px;
+  width: 32x;
   border-radius: 100%;
   border: 1px solid black;
+  margin: 5px;
 }
 .profilePicture:hover{
   cursor: pointer;
