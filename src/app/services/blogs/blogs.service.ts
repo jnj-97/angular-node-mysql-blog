@@ -12,7 +12,7 @@ import { Blogs,likes,liked} from '../../interfaces/blogs';
 })
 export class BlogsService {
 
-  private baseURL:string="http://localhost:5000/blogs/"
+  private baseURL:string="https://ebc6-13-233-250-80.ngrok-free.app/blogs/"
   constructor(private http:HttpClient) {}
   getBlogs():Observable<Blogs[]>{
     return this.http.get<Blogs[]>(`${this.baseURL}home`)

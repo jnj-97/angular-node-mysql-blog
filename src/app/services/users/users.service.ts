@@ -7,7 +7,7 @@ import {liked} from 'src/app/interfaces/blogs'
   providedIn: 'root'
 })
 export class UsersService {
-  private baseURL:string="http://localhost:5000/users/"
+  private baseURL:string="https://ebc6-13-233-250-80.ngrok-free.app/users/"
   constructor(private http:HttpClient) { }
 
   getProfile():Observable<User>{
