@@ -1,0 +1,29 @@
+<div (click)="goback()" class="back-button"><span class="material-symbols-outlined">
+  arrow_back
+  </span> Back to Home</div>
+<div *ngIf="!userExists">User Doest Exist</div>
+<div *ngIf="userExists">
+<div class="flex-container">
+  <aside class="Sidebar">
+    <img  [src]="profilePicture" class="profile-picture"/>
+    <h1><strong>{{username}}</strong></h1>
+    <div *ngIf="user.followed"><button class="followed" (click)="unfollow()">Followed <span class="material-symbols-outlined">
+      done
+      </span></button></div>
+    <div *ngIf="!user.followed"><button (click)="follow()" class="follow">Follow</button></div>
+  </aside>
+  <main >
+    <h1>{{username}}'s Blogs</h1>
+    <div *ngIf="!user.blogs.length" style="color:red;" class = "no-blogs-posted">{{username}} haven't posted a blog yet <span class="material-symbols-outlined">
+      sentiment_dissatisfied
+      </span> .
+    </div>
+    <ul class="blog-list">
+
+      <li *ngFor="let item of user.blogs" class="blog-list-item">
+        <app-blogs [author]="username" [profile_picture]="user.profile_picture" [title]="item.title" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" [comments]="item.comments" class="blog-item"/>
+      </li>
+    </ul>
+  </main>
+</div>
+</div>

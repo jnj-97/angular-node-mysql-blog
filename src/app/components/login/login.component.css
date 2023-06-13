@@ -1,0 +1,113 @@
+.login-container {
+    background-color: black;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 100px auto 10px;
+    max-width: 400px;
+  }
+  
+  .login-title {
+    color: #fff;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    color:#fff;
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .form-input {
+    color:#333;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .form-btn {
+    background-color: #2ea44f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-btn:hover {
+    background-color: #23883e;
+  }
+  
+  .signup-link {
+    color: #221717;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  .signup-link a {
+    color: #2ea44f;
+    text-decoration: none;
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .login-error {
+    color: red;
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+
+  @media only screen and (min-width: 768px) {
+    .login-container {
+      max-width: 480px;
+    }
+  }
+  
+  /* For tablets */
+  @media only screen and (min-width: 576px) and (max-width: 767px) {
+    .login-container {
+      max-width: 450px;
+    }
+  }
+  
+  /* For mobiles */
+  @media only screen and (max-width: 575px) {
+    .login-container {
+      max-width: 70%;
+      padding: 10px;
+    }
+    .login-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .form-label {
+      font-size: 16px;
+    }
+    .form-input {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .form-btn {
+      font-size: 16px;
+    }
+    .signup-link {
+      font-size: 14px;
+    }
+    .login-error {
+      font-size: 14px;
+    }
+  }

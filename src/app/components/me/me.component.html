@@ -1,0 +1,59 @@
+<div (click)="goback()" class="back-button"><span class="material-symbols-outlined">
+  arrow_back
+  </span> Back to Home
+</div>
+
+<div class="flex-container">
+  <aside class="Sidebar">
+    <img (click)="fileInput.click()" [src]="profilePicture" class="profile-picture" />
+    <input type="file" id="fileInput" accept="image/*" #fileInput (change)="onFileSelected($event)">
+    <h1><strong>{{users.username}}</strong></h1>
+    <h2>{{users.email}}</h2>
+    <h1 class="change" (click)="notUsername()">Change Username</h1>
+    <div *ngIf="changeUsername">
+      <form (ngSubmit)="changeusername(username)" #username="ngForm">
+        <input type="text" required minlength="5" ngModel (change)="checkusername(username.value.username)" name="username" />
+        <button type="submit">Change Username</button>
+      </form>
+      <p *ngIf="emptyUsername" class="error">Username shouldn't be empty</p>
+      <p *ngIf="checkUsername" class="error">Username already exists</p>
+    </div>
+    <h1 (click)="notpassword()" class="change">Change Password</h1>
+    <div *ngIf="changePassword">
+      <form (ngSubmit)="changepassword(password)" #password="ngForm">
+        <input type="password" placeholder="Enter old password" required minlength="5" ngModel name="oldpassword" />
+        <input type="password" placeholder="Enter new password" required minlength="5" ngModel name="newpassword" />
+        <input type="password" placeholder="Confirm new password" required minlength="5" ngModel name="confirmpassword" />
+        <button type="submit">Change Password</button>
+      </form>
+      <p *ngIf="emptyPassword" class="error">Password shouldn't be empty</p>
+      <p *ngIf="checkPassword" class="error">New Password and Confirm Password don't match</p>
+      <p *ngIf="samePassword" class="error">New Password can't be the same as the old password</p>
+      <p *ngIf="wrongPassword" class="error">Old Password is wrong</p>
+    </div>
+  </aside>
+  <main>
+    <h1>My Blogs</h1>
+    <div *ngIf="!users.blogs.length" style="color:red;">
+      You haven't posted a blog yet <span class="material-symbols-outlined">
+      sentiment_dissatisfied
+      </span>.
+    </div>
+    <ul class="blog-list">
+      <li *ngFor="let item of users.blogs" class="blog-list-item">
+        <app-blogs
+          [author]="users.username"
+          [profile_picture]="users.profile_picture"
+          [title]="item.title"
+          [created]="item.created_time"
+          [body]="item.body"
+          [id]="item.id"
+          [likes]="item.likes"
+          [liked]="item.liked"
+          [comments]="item.comments"
+          class="blog-item"
+        ></app-blogs>
+      </li>
+    </ul>
+  </main>
+</div>

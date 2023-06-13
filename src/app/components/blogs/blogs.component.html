@@ -1,0 +1,37 @@
+<div class = "blog-comment">
+  <div class="blog-comment-list">
+    <div class="blog-comment-header">
+      <img src="data:image/png;base64,{{profile_picture}}" class="blog-comment-logo"/>
+      <div class="blog-comment-details"><h1>{{title}}</h1> <p>by <span class="author"><a href="/users/{{author}}">{{author}}</a></span> at {{created}} </p></div>
+    </div>
+    <p class="blog-comment-body">{{body}}</p>
+    <div  class="blog-comment-footer">
+      <span [ngStyle]="{'color':liked?'red':''}" (click)="like()" class="material-symbols-outlined blog-comment-like">
+        thumb_up
+        </span>
+      <h6 (click)="showLikes()" class="blog-comment-like-count">{{likes}}</h6>
+      <div *ngIf="likesDisplay">
+        <div *ngIf="likes==0" class="nolikes">This Post has no likes</div>
+        <ul>
+          <li *ngFor="let like of likeList">
+            <div class="like-item"><img src="data:image/png;base64,{{like.profile_picture}}"/><h1>{{like.username}}</h1></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="addMessage">
+      <img [src]="user" class="blog-comment-logo"/>
+    <form>
+      <input type="text" maxlength="255" [(ngModel)]="name" name="name" (keydown.enter)="addComment()" placeholder="Add a comment"/>
+    </form>
+    </div>
+  </div>
+  <div *ngIf="comments.length>0" class = "blog-comment-list-msg">
+    <ul>
+      <li *ngFor="let item of comments">
+          <app-comment [created_at]="item.created_at" [message]="item.message" [username]="item.username" [profile_picture]="item.profile_picture"/>
+      </li>
+    </ul>
+  </div>
+</div>
+

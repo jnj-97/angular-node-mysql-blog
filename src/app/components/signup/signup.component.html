@@ -1,0 +1,23 @@
+<div class="signup-container">
+  <p class="signup-title">Sign Up</p>
+  <form (ngSubmit)="onSignUpSubmit(signUpForm)" #signUpForm="ngForm" class="signup-form">
+    <div class="form-input-container">
+      <label class="form-label">Name</label>
+      <input name="name" class="form-input" type="text" ngModel/>
+    </div>
+    <div class="form-input-container">
+      <label class="form-label">Email</label>
+      <input name="email" class="form-input" type="email" ngModel/>      
+    </div>
+    <div class="form-input-container">
+      <label class="form-label">Password</label>
+      <input name="password" class="form-input" type="password" ngModel/>
+    </div>
+    <div class="form-btn-container">
+      <button  class="form-btn" type="submit">Sign Up</button>
+    </div>
+  </form>
+</div>
+<div class="login-link">Already have an Account? Log In <a href="/login">Here</a></div>
+<div class="signup-error" *ngIf="registrationError">Invalid Field(s). Please Try Again</div>
+

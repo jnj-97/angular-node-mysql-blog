@@ -1,0 +1,114 @@
+.blog-comment {
+    background-color: #333333;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.blog-comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.author{
+    color:rgb(107, 194, 197);
+}
+
+.blog-comment-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.blog-comment-header h1
+{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.blog-comment-body {
+    font-size: 17px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.blog-comment-like {
+    filter: hue-rotate(180deg);
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+
+}
+
+.blog-comment-like-count {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+}
+.blog-comment-like-count:hover{
+  cursor: pointer;
+}
+.blog-comment-like:hover{
+  cursor:pointer;
+
+}
+.noLikes{
+  color:red;
+}
+.like-item{
+  padding:10px;
+  color:white;
+  background-color: black;
+  display: flex;
+  width:20%;
+}
+.like-item>img{
+  border-radius: 100%;
+  height: 3vw;
+  width: 3vw;
+}
+
+.addMessage {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.blog-comment-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+form {
+  width: 100%;
+}
+
+input[type="text"] {
+  width: 40%;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 5%;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+}
+.blog-comment-list-msg
+{
+  background-color: white;
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #222;
+}
+
+@media (min-width: 768px) {
+  .blog-comment {
+    width: 70%;
+  }
+}

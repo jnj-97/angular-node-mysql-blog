@@ -1,0 +1,43 @@
+<nav class="navbar">
+  <div class="nav-brand">
+    <a href="#" class = "logo"><img src="assets/images/bird-logo.png" alt="GitHub Logo"></a>
+    <h1 class="heading">Timepass Blogs</h1>
+  </div>
+  <div class="nav-links" [class.show]="sandwitchClicked">
+    <ul>
+      <li><a (click)="reload()" >Home</a></li>
+      <li><a (click)="follow()" >Followed</a></li>
+    </ul>
+  </div>
+  <div class="navbar-search-container">
+    <input type="text" class="navbar-search-input" (input)="searchUser($event)" placeholder="Search for Users" />
+    <div *ngIf="results">
+      <ul>
+        <li *ngIf="searchUsers.length==0" class="no-users">No Users Found</li>
+        <li class="results" *ngFor="let item of searchUsers">
+          <a href="/users/{{item.username}}"><div class="result" >
+          <img src="data:image/png;base64,{{item.profile_picture}}"/><h1>{{item.username}}</h1>
+        </div></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button class="nav-toggle" (click)="toggleNav()">
+    <span class="sandwich-symbol navbar-toggle-icon"><i class="fas fa-bars"></i></span>
+  </button>
+  <img class="profilePicture" (click)="profileClick()" [src]="profilePicture"/>
+</nav>
+<div *ngIf="profileClicked" class="account-menu">
+
+  <ul>
+    <li (click)="profilePage()">My Profile</li>
+    <li (click)="logOut()">Log Out</li>
+  </ul>
+</div>
+<app-add-post-form class="add-post-form"/>
+<ul class="blog-list">
+  <li *ngFor="let item of blogs" class="blog-list-item">
+    <app-blogs [title]="item.title" [profile_picture]="item.profile_picture" [author]="item.username" [user]="profilePicture" [created]="item.created_time" [body]="item.body" [id]="item.id" [likes]="item.likes" [liked]="item.liked" [comments]="item.comments"  class="blog-item"/>
+  </li>
+</ul>
+<footer>Developed by <a href="https://github.com/karthiksatish159">Karthik Satish Telagareddy</a>, <a href="https://github.com/jnj-97">Nobin Johnson</a> and <a href="https://github.com/jagadeeswar300">Jagadeeswar Reddy</a><br/>Logo by <a href="https://www.instagram.com/_limitless_colour_trails_/">_limitless_colour_trails_</a> </footer>
